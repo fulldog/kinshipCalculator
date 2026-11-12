@@ -50,6 +50,7 @@ runCases(require('./cases.parse'), '解析');
 runCases(require('./cases.far'), '远房');
 runCases(require('./cases.invalid'), '不存在');
 require('./props')(eq, ok);
+require('./lore.test')(eq, ok);
 
 console.log('\n' + (total - failed.length) + '/' + total + ' 通过');
 if (failed.length) {

@@ -7,6 +7,14 @@
         "type": "folder"
       },
       {
+        "value": "doc",
+        "type": "folder"
+      },
+      {
+        "value": "assets",
+        "type": "folder"
+      },
+      {
         "value": "package.json",
         "type": "file"
       },
@@ -58,7 +66,7 @@
   },
   "compileType": "miniprogram",
   "libVersion": "3.3.4",
-  "appid": "wx9bb82363229b72fd",
+  "appid": "wx7a58551e01e456e3",
   "projectname": "kinshipCalculator",
   "condition": {
     "miniprogram": {

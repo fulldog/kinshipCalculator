@@ -1,52 +1,18 @@
-<view class="wrap">
+<view class="wrap about">
   <view class="head">
     <view class="head-title">亲戚称呼计算器</view>
     <view class="head-sub">对方是谁，一句话算清楚</view>
   </view>
 
-  <view class="card">
-    <view class="h">怎么用</view>
-    <view class="p">点「再往上选一级」逐个选出关系，每点一次上面的称呼就会跟着变；也可以直接打字，比如「爸爸的哥哥的妻子」。</view>
-    <view class="p">开头要选「我是男生 / 女生」，因为对方怎么叫你，取决于你的性别。</view>
-  </view>
-
-  <view class="card">
-    <view class="h">关于几种叫法</view>
-    <view class="p">同一个关系在不同地区、不同家庭叫法不一样，比如伯父也叫伯伯、大爷，外婆也叫姥姥。有多个说法的会一起列出来，没有唯一正确的那一个。</view>
-    <view class="p">「堂哥 / 堂弟」这种要靠年龄判断的，工具没法替你决定，结果页会让你选「他比你大还是小」。</view>
-  </view>
-
-  <view class="card">
-    <view class="h">关于「堂」和「表」</view>
-    <view class="p">堂是父亲兄弟这一支（同一个爷爷），表是其他所有旁系：父亲的姐妹、母亲的兄弟姐妹。所以「舅舅的儿子」是表兄弟，「伯父的儿子」是堂兄弟。</view>
-    <view class="p">堂和表是相对说话人的。你叫「表姨」的那位，从她的角度看你的妈妈是她的堂姐妹，她就会叫你「堂外甥」。这不是矛盾，是两个人各站在自己这边数。</view>
-  </view>
-
-  <view class="card">
-    <view class="h">关于「远房」</view>
-    <view class="p">隔了两代以上的旁系会加「远房」，比如「远房堂伯」「远房表哥」。这类关系的共同祖先已经出了曾祖父往上，亲戚之间通常就不走动了，称呼也就没那么固定。主称呼后面一般还给一个不带「远房」的日常叫法。</view>
-  </view>
-
-  <view class="card">
-    <view class="h">关于「外」字</view>
-    <view class="p">外祖父、外孙这类说法里的「外」，是传统称谓里用来区分父系和母系的习惯用语，不含任何亲疏远近的判断。</view>
-  </view>
-
-  <view class="card">
-    <view class="h">算不出来的时候</view>
-    <view class="p">有些关系确实没有专门的称呼，比如「舅妈的妈妈」。这种情况会按关系逐级描述出来，虽然啰嗦，但一定不会错。</view>
-    <view class="p">宁可给你一句准确的话，也不给一个听起来像那么回事、其实是错的词。</view>
-  </view>
-
-  <view class="card">
-    <view class="h">隐私</view>
-    <view class="p">不收集任何个人信息，不做登录，不上传数据。查询记录只存在你自己的手机上，清空小程序缓存就没了。</view>
-  </view>
-
-  <view class="card">
-    <view class="h">称呼有误？</view>
-    <view class="p">各地叫法差异很大，如果你发现明显不对的地方，点下面复制反馈模板发给开发者。</view>
-    <view class="btn-feedback" bindtap="onCopyFeedback">复制反馈模板</view>
+  <view class="card" wx:for="{{sections}}" wx:key="h">
+    <view class="h-row" data-i="{{index}}" bindtap="onToggle" hover-class="h-hover">
+      <view class="h">{{item.h}}</view>
+      <view class="chev">{{open === index ? '收起' : '展开'}}</view>
+    </view>
+    <view wx:if="{{open === index}}">
+      <view class="p" wx:for="{{item.paragraphs}}" wx:for-item="para" wx:key="*this">{{para}}</view>
+      <view wx:if="{{item.feedback}}" class="btn-feedback" bindtap="onCopyFeedback" hover-class="btn-feedback-hover">复制反馈模板</view>
+    </view>
   </view>
 
   <view class="ver">版本 {{version}} · 完全离线运行</view>

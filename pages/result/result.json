@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "path-graph": "/components/path-graph/path-graph",
-    "ad-slot": "/components/ad-slot/ad-slot"
+    "ad-slot": "/components/ad-slot/ad-slot",
+    "lore-modal": "/components/lore-modal/lore-modal"
   },
   "navigationBarTitleText": "称呼结果"
 }

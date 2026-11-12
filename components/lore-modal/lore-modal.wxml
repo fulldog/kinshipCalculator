@@ -1,0 +1,7 @@
+<view class="mask" wx:if="{{visible}}" bindtap="onClose" catchtouchmove="onStop">
+  <view class="sheet" catchtap="onStop">
+    <view class="title">{{title}}</view>
+    <view class="body">{{text}}</view>
+    <view class="ok" bindtap="onClose" hover-class="ok-hover">知道了</view>
+  </view>
+</view>

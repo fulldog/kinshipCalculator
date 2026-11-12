@@ -1,16 +1,15 @@
-page {
-  --bg: #F6F5F2;
-  --card: #FFFFFF;
-  --ink: #1F1D1A;
-  --ink-2: #6B655C;
-  --ink-3: #A39C90;
-  --line: #E6E2DA;
-  --accent: #B04A3A;
-  --accent-soft: #F3E4E0;
+@import "styles/tokens.wxss";
 
+page,
+button,
+input,
+textarea {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "楷体", "楷体_GB2312", system-ui, -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+page {
   background: var(--bg);
   color: var(--ink);
-  font-family: -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
   font-size: 30rpx;
   line-height: 1.55;
 }
@@ -21,7 +20,7 @@ page {
 
 .card {
   background: var(--card);
-  border-radius: 20rpx;
+  border-radius: var(--radius-lg);
   padding: 32rpx;
   margin-bottom: 24rpx;
   border: 1rpx solid var(--line);
@@ -42,7 +41,7 @@ page {
 .btn {
   height: 92rpx;
   line-height: 92rpx;
-  border-radius: 16rpx;
+  border-radius: var(--radius);
   text-align: center;
   font-size: 32rpx;
 }
@@ -53,7 +52,7 @@ page {
 }
 
 .btn-primary.disabled {
-  background: #D8D2C8;
+  background: var(--disabled);
   color: #fff;
 }
 

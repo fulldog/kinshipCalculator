@@ -1,4 +1,4 @@
-<view class="pad">
+<view class="pad {{locked ? 'is-locked' : ''}}">
   <view class="row" wx:for="{{groups}}" wx:key="label">
     <view class="row-label">{{item.label}}</view>
     <view class="keys">
@@ -9,7 +9,7 @@
         wx:key="k"
         data-k="{{key.k}}"
         bindtap="onPick"
-        hover-class="{{disabled[key.k] ? 'none' : 'key-hover'}}"
+        hover-class="{{disabled[key.k] || locked ? 'none' : 'key-hover'}}"
       >{{key.name}}</view>
     </view>
   </view>

@@ -6,6 +6,7 @@ Page({
   data: {
     selfSex: 'm',
     mainText: '',
+    mainLore: null,
     aliasText: '',
     note: '',
     options: [],
@@ -18,7 +19,12 @@ Page({
     reversePath: [],
     chainText: '',
     tierLabel: '',
-    adBanner: ''
+    mainLong: false,
+    revLong: false,
+    adBanner: '',
+    loreOpen: false,
+    loreTitle: '',
+    loreText: ''
   },
 
   onLoad: function (options) {
@@ -43,6 +49,7 @@ Page({
       selfSex: selfSex,
       ageHint: ageHint || '',
       mainText: r.forward.text,
+      mainLore: r.forward.lore || null,
       aliasText: R.aliasLine(r.forward),
       note: r.forward.note || '',
       options: opts,
@@ -54,6 +61,8 @@ Page({
       reversePath: this.withIds(R.pathItems(r.revAtoms, '他')),
       chainText: r.chainText,
       tierLabel: this.tierLabel(r.forward.tier, r.forward.text),
+      mainLong: (r.forward.text || '').length > 6,
+      revLong: (r.reverse.text || '').length > 8,
       adBanner: ad.hasBanner() ? ad.CONFIG.bannerUnitId : ''
     });
   },
@@ -75,6 +84,20 @@ Page({
   onAge: function (e) {
     var hint = e.currentTarget.dataset.hint;
     this.render(this.data.selfSex, hint === this.data.ageHint ? '' : hint);
+  },
+
+  onLore: function () {
+    var lore = this.data.mainLore;
+    if (!lore) return;
+    this.setData({
+      loreOpen: true,
+      loreTitle: lore.title,
+      loreText: lore.text
+    });
+  },
+
+  onLoreClose: function () {
+    this.setData({ loreOpen: false });
   },
 
   onCopy: function () {

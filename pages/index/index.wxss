@@ -1,20 +1,14 @@
-.hero {
-  padding: 16rpx 8rpx 32rpx;
+@import "../../styles/tokens.wxss";
+
+.home {
+  padding: 12rpx 32rpx calc(168rpx + constant(safe-area-inset-bottom));
+  padding: 12rpx 32rpx calc(168rpx + env(safe-area-inset-bottom));
 }
 
-.hero-title {
-  font-size: 52rpx;
-  font-weight: 500;
-  letter-spacing: 2rpx;
+.sex-block {
+  padding: 8rpx 8rpx 20rpx;
 }
 
-.hero-sub {
-  font-size: 26rpx;
-  color: #8A8578;
-  margin-top: 8rpx;
-}
-
-/* 性别 */
 .sex-row {
   display: flex;
   align-items: center;
@@ -22,73 +16,140 @@
 
 .sex-label {
   font-size: 28rpx;
-  color: #6B655C;
+  color: var(--ink-2);
   margin-right: 20rpx;
 }
 
 .seg {
   display: flex;
-  background: #F6F5F2;
-  border-radius: 12rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius-sm);
   padding: 6rpx;
 }
 
 .seg-item {
-  padding: 10rpx 32rpx;
+  min-width: 112rpx;
+  padding: 12rpx 28rpx;
   border-radius: 10rpx;
   font-size: 28rpx;
-  color: #6B655C;
+  color: var(--ink-2);
+  text-align: center;
 }
 
 .seg-item.on {
-  background: #FFFFFF;
-  color: #B04A3A;
-  border: 1rpx solid #E6E2DA;
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .sex-hint {
+  display: block;
+  margin-top: 12rpx;
   font-size: 22rpx;
-  color: #A39C90;
-  margin-left: auto;
+  color: var(--ink-3);
 }
 
-/* 实时预览 */
+.empty-hint {
+  font-size: 26rpx;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+
+.examples {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 16rpx;
+}
+
+.example {
+  height: 72rpx;
+  line-height: 72rpx;
+  padding: 0 24rpx;
+  margin: 0 16rpx 12rpx 0;
+  background: var(--bg);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius-sm);
+  font-size: 28rpx;
+  color: var(--ink);
+}
+
+.example-hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
 .preview {
   margin-top: 24rpx;
   padding-top: 24rpx;
-  border-top: 1rpx dashed #E6E2DA;
+  border-top: 1rpx dashed var(--line);
 }
 
 .preview-label {
   font-size: 22rpx;
-  color: #A39C90;
+  color: var(--ink-3);
+  text-align: center;
 }
 
 .preview-value {
   font-size: 56rpx;
   font-weight: 500;
-  color: #B04A3A;
+  color: var(--accent);
   letter-spacing: 4rpx;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.preview-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-top: 6rpx;
+}
+
+.preview-row .preview-value {
+  flex: 0 1 auto;
+  min-width: 0;
+}
+
+/* 称呼典故问号 */
+.lore-icon {
+  flex: none;
+  width: 44rpx;
+  height: 44rpx;
+  line-height: 44rpx;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1rpx solid var(--line);
+  color: var(--ink-3);
+  font-size: 28rpx;
+  margin-left: 12rpx;
+}
+
+.lore-hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .preview-note {
   font-size: 24rpx;
-  color: #8A8578;
+  color: var(--ink-soft);
   margin-top: 4rpx;
+  text-align: center;
 }
 
-/* 长幼待确认 */
 .pending {
   margin-top: 24rpx;
-  background: #FBF3F1;
-  border-radius: 12rpx;
+  background: var(--pending-bg);
+  border-radius: var(--radius-sm);
   padding: 20rpx;
 }
 
 .pending-q {
   font-size: 26rpx;
-  color: #8C3A2C;
+  color: var(--accent-ink);
+  line-height: 1.5;
 }
 
 .pending-btns {
@@ -99,13 +160,13 @@
 .mini {
   flex: 1;
   text-align: center;
-  height: 64rpx;
-  line-height: 64rpx;
-  background: #FFFFFF;
-  border: 1rpx solid #E6E2DA;
+  height: var(--tap);
+  line-height: var(--tap);
+  background: var(--card);
+  border: 1rpx solid var(--line);
   border-radius: 10rpx;
-  font-size: 26rpx;
-  color: #1F1D1A;
+  font-size: 28rpx;
+  color: var(--ink);
   margin-right: 16rpx;
 }
 
@@ -113,7 +174,24 @@
   margin-right: 0;
 }
 
-/* 输入 */
+.mini-hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+
+.text-toggle {
+  height: var(--tap);
+  line-height: var(--tap);
+  text-align: center;
+  font-size: 28rpx;
+  color: var(--ink-2);
+  margin: -8rpx 0 16rpx;
+}
+
+.text-toggle-hover {
+  color: var(--accent);
+}
+
 .input-row {
   display: flex;
   align-items: center;
@@ -121,40 +199,60 @@
 
 .input {
   flex: 1;
-  height: 84rpx;
-  background: #F6F5F2;
-  border-radius: 12rpx;
+  height: var(--tap);
+  background: var(--bg);
+  border-radius: var(--radius-sm);
   padding: 0 20rpx;
   font-size: 28rpx;
 }
 
 .ph {
-  color: #B4AFA5;
+  color: var(--placeholder);
 }
 
 .parse-btn {
   flex: none;
   margin-left: 16rpx;
-  height: 84rpx;
-  line-height: 84rpx;
+  height: var(--tap);
+  line-height: var(--tap);
   padding: 0 32rpx;
-  border-radius: 12rpx;
-  background: #1F1D1A;
-  color: #FFFFFF;
+  border-radius: var(--radius-sm);
+  background: var(--ink);
+  color: var(--card);
   font-size: 28rpx;
+}
+
+.parse-hover {
+  opacity: 0.85;
 }
 
 .warn {
   margin-top: 16rpx;
   font-size: 24rpx;
-  color: #B04A3A;
+  color: var(--accent);
+  line-height: 1.55;
 }
 
-/* 主按钮 */
-.action-row {
+.dock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
   display: flex;
   align-items: center;
-  margin: 8rpx 0 32rpx;
+  padding: 16rpx 32rpx calc(16rpx + constant(safe-area-inset-bottom));
+  padding: 16rpx 32rpx calc(16rpx + env(safe-area-inset-bottom));
+  background: var(--bg);
+  border-top: 1rpx solid var(--line);
+}
+
+.home-input {
+  padding-bottom: 32rpx;
+}
+
+.dock-flow {
+  position: static;
 }
 
 .go {
@@ -162,15 +260,19 @@
   height: 96rpx;
   line-height: 96rpx;
   text-align: center;
-  background: #B04A3A;
-  color: #FFFFFF;
-  border-radius: 16rpx;
+  background: var(--accent);
+  color: var(--card);
+  border-radius: var(--radius);
   font-size: 32rpx;
   letter-spacing: 2rpx;
 }
 
 .go.disabled {
-  background: #D8D2C8;
+  background: var(--disabled);
+}
+
+.go-hover {
+  opacity: 0.9;
 }
 
 .reset {
@@ -180,18 +282,17 @@
   height: 96rpx;
   line-height: 96rpx;
   text-align: center;
-  background: #FFFFFF;
-  border: 1rpx solid #E6E2DA;
-  border-radius: 16rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius);
   font-size: 30rpx;
-  color: #6B655C;
+  color: var(--ink-2);
 }
 
 .reset-hover {
-  background: #F6F5F2;
+  background: var(--bg);
 }
 
-/* 最近 */
 .recent-list {
   display: flex;
   flex-wrap: wrap;
@@ -200,31 +301,31 @@
 .recent-item {
   display: flex;
   align-items: baseline;
-  padding: 12rpx 20rpx;
-  background: #FFFFFF;
-  border: 1rpx solid #E6E2DA;
-  border-radius: 12rpx;
+  padding: 16rpx 20rpx;
+  background: var(--card);
+  border: 1rpx solid var(--line);
+  border-radius: var(--radius-sm);
   margin: 0 16rpx 16rpx 0;
 }
 
 .recent-hover {
-  background: #F6F5F2;
+  background: var(--bg);
 }
 
 .recent-text {
   font-size: 28rpx;
-  color: #1F1D1A;
+  color: var(--ink);
   margin-right: 10rpx;
 }
 
 .recent-chain {
   font-size: 22rpx;
-  color: #A39C90;
+  color: var(--ink-3);
 }
 
 .foot {
   text-align: center;
   font-size: 24rpx;
-  color: #A39C90;
-  padding: 32rpx 0 8rpx;
+  color: var(--ink-3);
+  padding: 16rpx 0 8rpx;
 }

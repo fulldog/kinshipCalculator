@@ -1,0 +1,26 @@
+page,
+:host {
+  font-family: "Kaiti SC", "STKaiti", "KaiTi", "楷体", "楷体_GB2312", system-ui, -apple-system, "PingFang SC", "Helvetica Neue", sans-serif;
+  --bg: #F6F5F2;
+  --card: #FFFFFF;
+  --ink: #1F1D1A;
+  --ink-2: #6B655C;
+  --ink-soft: #8A8578;
+  --ink-3: #A39C90;
+  --line: #E6E2DA;
+  --accent: #B04A3A;
+  --accent-soft: #F3E4E0;
+  --accent-ink: #8C3A2C;
+  --pending-bg: #FBF3F1;
+  --disabled: #D8D2C8;
+  --disabled-ink: #C9C3B8;
+  --key-off-bg: #F1EFEA;
+  --chip-start: #EDEAE3;
+  --chip-x: #B98C83;
+  --chip-hover: #EBD3CD;
+  --placeholder: #B4AFA5;
+  --radius-sm: 12rpx;
+  --radius: 16rpx;
+  --radius-lg: 20rpx;
+  --tap: 88rpx;
+}

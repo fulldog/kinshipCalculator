@@ -1,4 +1,8 @@
 Component({
+  options: {
+    multipleSlots: true
+  },
+
   properties: {
     chips: { type: Array, value: [] }
   },

@@ -1,4 +1,6 @@
+@import "../../styles/tokens.wxss";
+
 .ad-wrap {
-  margin-top: 40rpx;
-  padding: 0 8rpx;
+  margin-top: 24rpx;
+  min-height: 140rpx;
 }

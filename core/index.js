@@ -9,6 +9,7 @@ var SIG = require('./signature');
 var INVERT = require('./invert');
 var DESCRIBE = require('./describe');
 var NAME = require('./name');
+var LORE = require('./lore');
 var PARSER = require('./parse');
 
 function literal(atoms) {
@@ -86,6 +87,7 @@ function solve(input) {
   }
   var sig = SIG.toSignature(red, selfSex);
   var forward = DESCRIBE.describe(sig, { ageHint: ageHint }) || literal(red);
+  forward.lore = LORE.lookup(forward.text);
 
   var sexes = INVERT.chainSexes(red, selfSex);
   var revSelfSex = sexes[sexes.length - 1] || selfSex;

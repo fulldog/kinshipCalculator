@@ -1,20 +1,29 @@
 <view class="editor">
-  <view class="empty" wx:if="{{chips.length === 0}}">点下面的按钮，一步步选出他是谁</view>
+  <block wx:if="{{chips.length === 0}}">
+    <slot name="empty">
+      <view class="empty">点下面的按钮，一步步选出他是谁</view>
+    </slot>
+  </block>
 
   <view class="chain" wx:else>
     <view class="chip start">你</view>
-    <block wx:for="{{chips}}" wx:key="id">
-      <view class="arrow">›</view>
-      <view class="chip" data-index="{{index}}" bindtap="onRemove" hover-class="chip-hover">
-        <text class="chip-name">{{item.name}}</text>
-        <text class="chip-x">✕</text>
-      </view>
-    </block>
+    <view
+      class="chip"
+      wx:for="{{chips}}"
+      wx:key="id"
+      data-index="{{index}}"
+      bindtap="onRemove"
+      hover-class="chip-hover"
+    >
+      <text class="arrow">›</text>
+      <text class="chip-name">{{item.name}}</text>
+      <text class="chip-x">✕</text>
+    </view>
   </view>
 
   <view class="tools" wx:if="{{chips.length > 0}}">
-    <view class="tool" bindtap="onUndo">删一步</view>
+    <view class="tool" bindtap="onUndo" hover-class="tool-hover">删一步</view>
     <view class="tool-sep">|</view>
-    <view class="tool" bindtap="onClear">清空</view>
+    <view class="tool" bindtap="onClear" hover-class="tool-hover">清空</view>
   </view>
 </view>

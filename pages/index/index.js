@@ -12,40 +12,56 @@ Page({
     preview: '',
     previewNote: '',
     inputValue: '',
+    inputOpen: false,
+    inputFocused: false,
     warn: '',
+    warnSource: '',
     pending: null,
     pendingQuestion: '',
-    recent: []
+    hasPending: false,
+    keyDisabled: {},
+    invalid: false,
+    recent: [],
+    loreOpen: false,
+    loreTitle: '',
+    loreText: ''
   },
 
   onLoad: function () {
+    var sex = store.getSex();
+    this.data.selfSex = sex;
     this.setData({
-      selfSex: store.getSex(),
+      selfSex: sex,
       recent: store.getRecent()
     });
+    this.refresh(this.data.atoms || []);
   },
 
   onShow: function () {
-    this.setData({ recent: store.getRecent(), selfSex: store.getSex() });
+    var sex = store.getSex();
+    this.data.selfSex = sex;
+    this.setData({ recent: store.getRecent(), selfSex: sex });
+    this.refresh(this.data.atoms || []);
   },
 
   onSex: function (e) {
     var v = e.currentTarget.dataset.v;
     store.setSex(v);
+    this.data.selfSex = v;
     this.setData({ selfSex: v });
     this.refresh(this.data.atoms);
   },
 
   onPick: function (e) {
     var k = e.detail.k;
-    this.setData({ warn: '' });
+    this.setData({ warn: '', warnSource: '' });
     var atoms = this.data.atoms.concat([A.mk(k, false)]);
     var bad = K.check(atoms, this.data.selfSex);
     if (bad) {
       var msg = bad.type === 'self'
         ? (this.data.selfSex === 'm' ? '男生没有「' + bad.word + '」' : '女生没有「' + bad.word + '」')
         : '没有这种关系：「' + bad.word + '」。现实中不存在，看看是不是点错了';
-      this.setData({ warn: msg });
+      this.setData({ warn: msg, warnSource: 'key' });
       return;
     }
     this.refresh(atoms);
@@ -68,8 +84,22 @@ Page({
   },
 
   onReset: function () {
-    this.setData({ inputValue: '', warn: '' });
+    this.setData({ inputValue: '', warn: '', warnSource: '', inputOpen: false });
     this.refresh([]);
+  },
+
+  onLore: function () {
+    var lore = this.data.previewLore;
+    if (!lore) return;
+    this.setData({
+      loreOpen: true,
+      loreTitle: lore.title,
+      loreText: lore.text
+    });
+  },
+
+  onLoreClose: function () {
+    this.setData({ loreOpen: false });
   },
 
   refresh: function (atoms) {
@@ -83,13 +113,14 @@ Page({
       chips: chips,
       preview: '',
       previewNote: '',
+      previewLore: null,
       pending: null,
       pendingQuestion: '',
+      hasPending: false,
       keyDisabled: {},
       invalid: false
     };
 
-    // 键盘置灰：点了会构成"不存在的关系"的键不可点
     var kd = {};
     for (var i = 0; i < A.KEYS.length; i++) {
       if (!K.canAppend(atoms, A.KEYS[i], this.data.selfSex)) kd[A.KEYS[i]] = true;
@@ -100,9 +131,9 @@ Page({
       var r = K.solve({ atoms: atoms, selfSex: this.data.selfSex });
       data.preview = r.forward.text;
       data.previewNote = r.forward.note || '';
+      data.previewLore = r.forward.lore || null;
       data.invalid = !!r.invalid;
 
-      // 长幼未知时给出二选一，绝不替用户猜
       var pend = P.pendingOf(atoms);
       if (pend.length) {
         var p = pend[0];
@@ -110,6 +141,7 @@ Page({
         data.pending = { index: p.index, sex: p.sex };
         data.pendingQuestion = '「' + prevName + '」的' +
           (p.sex === 'm' ? '兄弟' : '姐妹') + '，是年长的还是年幼的？';
+        data.hasPending = true;
       }
     }
 
@@ -125,25 +157,50 @@ Page({
     this.refresh(atoms);
   },
 
+  onToggleInput: function () {
+    this.setData({ inputOpen: !this.data.inputOpen });
+  },
+
+  onInputFocus: function () {
+    this.setData({ inputFocused: true });
+  },
+
+  onInputBlur: function () {
+    this.setData({ inputFocused: false });
+  },
+
   onInput: function (e) {
     this.setData({ inputValue: e.detail.value });
   },
 
+  onExample: function (e) {
+    var text = e.currentTarget.dataset.text;
+    this.parseText(text);
+  },
+
   onParse: function () {
-    var text = this.data.inputValue;
+    this.parseText(this.data.inputValue);
+  },
+
+  parseText: function (text) {
     if (!text) return;
     var res = P.parse(text);
 
     if (!res.atoms.length && !res.unsupported.length) {
-      this.setData({ warn: '没认出「' + text + '」，试试「爸爸的哥哥」这样的写法' });
+      this.setData({
+        warn: '没认出「' + text + '」，试试「爸爸的哥哥」这样的写法',
+        warnSource: 'input',
+        inputOpen: true
+      });
       return;
     }
 
-    // 有认不出的词就整句不算 —— 只拿认出来的那部分去算，等于给你一个错答案
     if (res.unsupported.length) {
       this.setData({
         warn: '「' + res.unsupported.join('、') +
-          '」不含方向信息，要先说清是哪边的亲戚。换成「舅舅的儿子」「爸爸的哥哥的儿子」这类写法，或者直接用下面的键盘点选。'
+          '」不含方向信息，要先说清是哪边的亲戚。换成「舅舅的儿子」「爸爸的哥哥的儿子」这类写法，或者直接用下面的键盘点选。',
+        warnSource: 'input',
+        inputOpen: true
       });
       return;
     }
@@ -151,27 +208,30 @@ Page({
     if (res.ambiguous.length) {
       var amb = res.ambiguous[0];
       this.setData({
-        warn: '「' + amb.word + '」各地指的不是同一个人（' + amb.hint + '）。说清是哪一边再算，或者直接点选。'
+        warn: '「' + amb.word + '」各地指的不是同一个人（' + amb.hint + '）。说清是哪一边再算，或者直接点选。',
+        warnSource: 'input',
+        inputOpen: true
       });
       return;
     }
 
     if (res.unknown.length) {
       this.setData({
-        warn: '没认出「' + res.unknown.join('、') + '」，这句没敢算。改一下再试，或者直接点选。'
+        warn: '没认出「' + res.unknown.join('、') + '」，这句没敢算。改一下再试，或者直接点选。',
+        warnSource: 'input',
+        inputOpen: true
       });
       return;
     }
 
-    this.setData({ warn: '', inputValue: '' });
+    this.setData({ warn: '', warnSource: '', inputValue: '', inputOpen: false });
     this.refresh(res.atoms);
   },
 
   onGo: function () {
     if (!this.data.atoms.length) return;
-    // 切性别可能让已选的链失效（选了「老婆」又切成女生），拦在首页
     if (this.data.invalid) {
-      this.setData({ warn: '这个关系不成立，先删掉几步再查' });
+      this.setData({ warn: '这个关系不成立，先删掉几步再查', warnSource: 'key' });
       return;
     }
     var q = R.toQuery(this.data.atoms, this.data.selfSex);

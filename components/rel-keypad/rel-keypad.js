@@ -4,6 +4,11 @@ Component({
     disabled: {
       type: Object,
       value: {}
+    },
+    /** 长幼未确认时锁住键盘，避免又点进新的一步 */
+    locked: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -20,6 +25,7 @@ Component({
     onPick: function (e) {
       var k = e.currentTarget.dataset.k;
       if (!k) return;
+      if (this.data.locked) return;
       if (this.data.disabled && this.data.disabled[k]) return;
       this.triggerEvent('pick', { k: k });
       try { wx.vibrateShort({ type: 'light', fail: function () {} }); } catch (err) {}
