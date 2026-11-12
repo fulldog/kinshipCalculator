@@ -1,0 +1,4 @@
+.ad-wrap {
+  margin-top: 40rpx;
+  padding: 0 8rpx;
+}

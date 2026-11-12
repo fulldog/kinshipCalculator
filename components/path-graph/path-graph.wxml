@@ -1,0 +1,8 @@
+<scroll-view class="scroller" scroll-x enhanced show-scrollbar="{{false}}">
+  <view class="track">
+    <block wx:for="{{items}}" wx:key="id">
+      <view class="node {{index === 0 ? 'start' : ''}}">{{item.label}}</view>
+      <view class="link" wx:if="{{index < items.length - 1}}"></view>
+    </block>
+  </view>
+</scroll-view>

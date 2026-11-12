@@ -1,0 +1,164 @@
+.top {
+  padding: 48rpx 8rpx 40rpx;
+}
+
+.ask {
+  font-size: 26rpx;
+  color: #8A8578;
+  letter-spacing: 2rpx;
+}
+
+.main {
+  font-size: 104rpx;
+  font-weight: 500;
+  letter-spacing: 8rpx;
+  color: #1F1D1A;
+  line-height: 1.25;
+  margin-top: 8rpx;
+}
+
+.alias {
+  font-size: 28rpx;
+  color: #8C3A2C;
+  margin-top: 8rpx;
+}
+
+.note {
+  font-size: 24rpx;
+  color: #A39C90;
+  margin-top: 10rpx;
+}
+
+.tier {
+  display: inline-block;
+  font-size: 22rpx;
+  color: #8C3A2C;
+  background: #F3E4E0;
+  padding: 4rpx 14rpx;
+  border-radius: 8rpx;
+  margin-bottom: 16rpx;
+}
+
+/* 长幼消歧 */
+.age {
+  background: #FFFFFF;
+  border: 1rpx solid #E6E2DA;
+  border-radius: 20rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+}
+
+.age-q {
+  font-size: 26rpx;
+  color: #6B655C;
+}
+
+.age-btns {
+  display: flex;
+  margin-top: 18rpx;
+}
+
+.age-btn {
+  flex: 1;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  border-radius: 12rpx;
+  border: 1rpx solid #E6E2DA;
+  font-size: 28rpx;
+  color: #1F1D1A;
+  margin-right: 16rpx;
+}
+
+.age-btn:last-child {
+  margin-right: 0;
+}
+
+.age-btn.on {
+  background: #B04A3A;
+  border-color: #B04A3A;
+  color: #FFFFFF;
+}
+
+/* 候选称呼 */
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 24rpx;
+}
+
+.opt {
+  padding: 14rpx 26rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E2DA;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #1F1D1A;
+  margin: 0 16rpx 16rpx 0;
+}
+
+/* 反向称呼 */
+.rev-value {
+  font-size: 64rpx;
+  font-weight: 500;
+  letter-spacing: 4rpx;
+  color: #B04A3A;
+  margin-top: 4rpx;
+}
+
+.rev-hint {
+  font-size: 24rpx;
+  color: #A39C90;
+  margin-top: 6rpx;
+}
+
+/* 路径 */
+.chain {
+  font-size: 30rpx;
+  color: #1F1D1A;
+  margin-bottom: 24rpx;
+}
+
+.path-block {
+  margin-bottom: 20rpx;
+}
+
+.path-cap {
+  font-size: 22rpx;
+  color: #A39C90;
+  margin-bottom: 10rpx;
+}
+
+/* 操作 */
+.acts {
+  display: flex;
+  margin: 8rpx 0 16rpx;
+}
+
+.act {
+  flex: 1;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #1F1D1A;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E2DA;
+  border-radius: 14rpx;
+  margin-right: 16rpx;
+  padding: 0;
+}
+
+.act:last-child {
+  margin-right: 0;
+}
+
+.act-share {
+  background: #1F1D1A;
+  border-color: #1F1D1A;
+  color: #FFFFFF;
+}
+
+.act-share::after {
+  border: none;
+}

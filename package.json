@@ -1,0 +1,10 @@
+{
+  "name": "kinship-calculator",
+  "version": "1.0.0",
+  "private": true,
+  "description": "亲戚称呼计算器 · 微信小程序",
+  "scripts": {
+    "test": "node tests/run.js",
+    "audit": "node tests/audit.js"
+  }
+}

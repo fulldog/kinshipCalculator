@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "path-graph": "/components/path-graph/path-graph",
+    "ad-slot": "/components/ad-slot/ad-slot"
+  },
+  "navigationBarTitleText": "称呼结果"
+}

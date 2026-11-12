@@ -1,0 +1,16 @@
+<view class="pad">
+  <view class="row" wx:for="{{groups}}" wx:key="label">
+    <view class="row-label">{{item.label}}</view>
+    <view class="keys">
+      <view
+        class="key {{disabled[key.k] ? 'key-off' : ''}}"
+        wx:for="{{item.keys}}"
+        wx:for-item="key"
+        wx:key="k"
+        data-k="{{key.k}}"
+        bindtap="onPick"
+        hover-class="{{disabled[key.k] ? 'none' : 'key-hover'}}"
+      >{{key.name}}</view>
+    </view>
+  </view>
+</view>

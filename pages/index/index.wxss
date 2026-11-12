@@ -1,0 +1,230 @@
+.hero {
+  padding: 16rpx 8rpx 32rpx;
+}
+
+.hero-title {
+  font-size: 52rpx;
+  font-weight: 500;
+  letter-spacing: 2rpx;
+}
+
+.hero-sub {
+  font-size: 26rpx;
+  color: #8A8578;
+  margin-top: 8rpx;
+}
+
+/* 性别 */
+.sex-row {
+  display: flex;
+  align-items: center;
+}
+
+.sex-label {
+  font-size: 28rpx;
+  color: #6B655C;
+  margin-right: 20rpx;
+}
+
+.seg {
+  display: flex;
+  background: #F6F5F2;
+  border-radius: 12rpx;
+  padding: 6rpx;
+}
+
+.seg-item {
+  padding: 10rpx 32rpx;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: #6B655C;
+}
+
+.seg-item.on {
+  background: #FFFFFF;
+  color: #B04A3A;
+  border: 1rpx solid #E6E2DA;
+}
+
+.sex-hint {
+  font-size: 22rpx;
+  color: #A39C90;
+  margin-left: auto;
+}
+
+/* 实时预览 */
+.preview {
+  margin-top: 24rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx dashed #E6E2DA;
+}
+
+.preview-label {
+  font-size: 22rpx;
+  color: #A39C90;
+}
+
+.preview-value {
+  font-size: 56rpx;
+  font-weight: 500;
+  color: #B04A3A;
+  letter-spacing: 4rpx;
+  margin-top: 6rpx;
+}
+
+.preview-note {
+  font-size: 24rpx;
+  color: #8A8578;
+  margin-top: 4rpx;
+}
+
+/* 长幼待确认 */
+.pending {
+  margin-top: 24rpx;
+  background: #FBF3F1;
+  border-radius: 12rpx;
+  padding: 20rpx;
+}
+
+.pending-q {
+  font-size: 26rpx;
+  color: #8C3A2C;
+}
+
+.pending-btns {
+  display: flex;
+  margin-top: 16rpx;
+}
+
+.mini {
+  flex: 1;
+  text-align: center;
+  height: 64rpx;
+  line-height: 64rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E2DA;
+  border-radius: 10rpx;
+  font-size: 26rpx;
+  color: #1F1D1A;
+  margin-right: 16rpx;
+}
+
+.mini:last-child {
+  margin-right: 0;
+}
+
+/* 输入 */
+.input-row {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  height: 84rpx;
+  background: #F6F5F2;
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+}
+
+.ph {
+  color: #B4AFA5;
+}
+
+.parse-btn {
+  flex: none;
+  margin-left: 16rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  padding: 0 32rpx;
+  border-radius: 12rpx;
+  background: #1F1D1A;
+  color: #FFFFFF;
+  font-size: 28rpx;
+}
+
+.warn {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #B04A3A;
+}
+
+/* 主按钮 */
+.action-row {
+  display: flex;
+  align-items: center;
+  margin: 8rpx 0 32rpx;
+}
+
+.go {
+  flex: 1;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  background: #B04A3A;
+  color: #FFFFFF;
+  border-radius: 16rpx;
+  font-size: 32rpx;
+  letter-spacing: 2rpx;
+}
+
+.go.disabled {
+  background: #D8D2C8;
+}
+
+.reset {
+  flex: none;
+  margin-left: 20rpx;
+  width: 152rpx;
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E2DA;
+  border-radius: 16rpx;
+  font-size: 30rpx;
+  color: #6B655C;
+}
+
+.reset-hover {
+  background: #F6F5F2;
+}
+
+/* 最近 */
+.recent-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recent-item {
+  display: flex;
+  align-items: baseline;
+  padding: 12rpx 20rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #E6E2DA;
+  border-radius: 12rpx;
+  margin: 0 16rpx 16rpx 0;
+}
+
+.recent-hover {
+  background: #F6F5F2;
+}
+
+.recent-text {
+  font-size: 28rpx;
+  color: #1F1D1A;
+  margin-right: 10rpx;
+}
+
+.recent-chain {
+  font-size: 22rpx;
+  color: #A39C90;
+}
+
+.foot {
+  text-align: center;
+  font-size: 24rpx;
+  color: #A39C90;
+  padding: 32rpx 0 8rpx;
+}

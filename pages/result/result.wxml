@@ -1,0 +1,50 @@
+<view class="wrap">
+  <view class="top">
+    <view class="tier" wx:if="{{tierLabel}}">{{tierLabel}}</view>
+    <view class="ask">你该叫他</view>
+    <view class="main">{{mainText}}</view>
+    <view class="alias" wx:if="{{aliasText}}">{{aliasText}}</view>
+    <view class="note" wx:if="{{note}}">{{note}}</view>
+  </view>
+
+  <view class="age" wx:if="{{ageSwitch}}">
+    <view class="age-q">他比你大还是小？</view>
+    <view class="age-btns">
+      <view class="age-btn {{ageHint === 'elder' ? 'on' : ''}}" data-hint="elder" bindtap="onAge">比我大</view>
+      <view class="age-btn {{ageHint === 'younger' ? 'on' : ''}}" data-hint="younger" bindtap="onAge">比我小</view>
+    </view>
+  </view>
+
+  <view class="options" wx:if="{{showOptions && !ageSwitch}}">
+    <view class="opt" wx:for="{{options}}" wx:key="*this">{{item}}</view>
+  </view>
+
+  <view class="card">
+    <view class="label">他该叫你</view>
+    <view class="rev-value">{{reverseText}}</view>
+    <view class="rev-hint">{{reverseHint}}</view>
+  </view>
+
+  <view class="card">
+    <view class="label">关系路径</view>
+    <view class="chain">{{chainText}}</view>
+
+    <view class="path-block">
+      <view class="path-cap">你的视角</view>
+      <path-graph items="{{forwardPath}}" />
+    </view>
+
+    <view class="path-block">
+      <view class="path-cap">他的视角</view>
+      <path-graph items="{{reversePath}}" />
+    </view>
+  </view>
+
+  <view class="acts">
+    <view class="act" bindtap="onCopy">复制</view>
+    <button class="act act-share" open-type="share">分享给家人</button>
+    <view class="act" bindtap="onAgain">再查一个</view>
+  </view>
+
+  <ad-slot unit-id="{{adBanner}}" />
+</view>

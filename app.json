@@ -1,0 +1,17 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/result/result",
+    "pages/about/about"
+  ],
+  "window": {
+    "navigationBarTitleText": "亲戚称呼计算器",
+    "navigationBarBackgroundColor": "#F6F5F2",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#F6F5F2",
+    "backgroundTextStyle": "dark"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

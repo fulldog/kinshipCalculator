@@ -1,0 +1,49 @@
+.pad {
+  display: block;
+}
+
+.row {
+  display: flex;
+  align-items: flex-start;
+  padding: 12rpx 0;
+}
+
+.row-label {
+  width: 96rpx;
+  flex: none;
+  font-size: 24rpx;
+  color: #A39C90;
+  line-height: 84rpx;
+  letter-spacing: 1rpx;
+}
+
+.keys {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.key {
+  min-width: 116rpx;
+  height: 84rpx;
+  line-height: 84rpx;
+  padding: 0 20rpx;
+  margin: 0 16rpx 16rpx 0;
+  text-align: center;
+  background: #F6F5F2;
+  border: 1rpx solid #E6E2DA;
+  border-radius: 14rpx;
+  font-size: 30rpx;
+  color: #1F1D1A;
+}
+
+.key-hover {
+  background: #F3E4E0;
+  border-color: #B04A3A;
+}
+
+.key-off {
+  background: #F1EFEA;
+  border-color: #E6E2DA;
+  color: #C9C3B8;
+}

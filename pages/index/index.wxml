@@ -1,0 +1,86 @@
+<view class="wrap">
+  <view class="hero">
+    <view class="hero-title">他到底该叫啥</view>
+    <view class="hero-sub">一步步选出关系，立刻出称呼</view>
+  </view>
+
+  <view class="card">
+    <view class="sex-row">
+      <text class="sex-label">我是</text>
+      <view class="seg">
+        <view class="seg-item {{selfSex === 'm' ? 'on' : ''}}" data-v="m" bindtap="onSex">男生</view>
+        <view class="seg-item {{selfSex === 'f' ? 'on' : ''}}" data-v="f" bindtap="onSex">女生</view>
+      </view>
+      <text class="sex-hint">影响对方怎么叫你</text>
+    </view>
+  </view>
+
+  <view class="card">
+    <chain-editor
+      chips="{{chips}}"
+      bind:remove="onRemove"
+      bind:undo="onUndo"
+      bind:clear="onClear"
+    />
+
+    <view class="preview" wx:if="{{preview}}">
+      <view class="preview-label">现在算出来是</view>
+      <view class="preview-value">{{preview}}</view>
+      <view class="preview-note" wx:if="{{previewNote}}">（{{previewNote}}）</view>
+    </view>
+
+    <view class="pending" wx:if="{{pending}}">
+      <view class="pending-q">{{pendingQuestion}}</view>
+      <view class="pending-btns">
+        <view class="mini" data-sen="elder" bindtap="onPending">年长的那个</view>
+        <view class="mini" data-sen="younger" bindtap="onPending">年幼的那个</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="card">
+    <view class="label">再往上选一级</view>
+    <rel-keypad disabled="{{keyDisabled}}" bind:pick="onPick" />
+  </view>
+
+  <view class="card">
+    <view class="label">也可以直接打字</view>
+    <view class="input-row">
+      <input
+        class="input"
+        value="{{inputValue}}"
+        placeholder="例如：爸爸的哥哥的妻子"
+        placeholder-class="ph"
+        bindinput="onInput"
+        confirm-type="search"
+        bindconfirm="onParse"
+      />
+      <view class="parse-btn" bindtap="onParse">解析</view>
+    </view>
+    <view class="warn" wx:if="{{warn}}">{{warn}}</view>
+  </view>
+
+  <view class="action-row">
+    <view class="go {{chips.length ? '' : 'disabled'}}" bindtap="onGo">查看称呼</view>
+    <view class="reset" bindtap="onReset" hover-class="reset-hover">重置</view>
+  </view>
+
+  <view class="recent" wx:if="{{recent.length}}">
+    <view class="label">最近查过</view>
+    <view class="recent-list">
+      <view
+        class="recent-item"
+        wx:for="{{recent}}"
+        wx:key="query"
+        data-query="{{item.query}}"
+        bindtap="onRecent"
+        hover-class="recent-hover"
+      >
+        <text class="recent-text">{{item.text}}</text>
+        <text class="recent-chain">{{item.chain}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot" bindtap="onAbout">关于 · 称呼有误？反馈一下</view>
+</view>

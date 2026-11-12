@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "rel-keypad": "/components/rel-keypad/rel-keypad",
+    "chain-editor": "/components/chain-editor/chain-editor"
+  },
+  "navigationBarTitleText": "亲戚称呼计算器"
+}
